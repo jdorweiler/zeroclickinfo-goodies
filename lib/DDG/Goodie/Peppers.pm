@@ -18,6 +18,7 @@ zci answer_type => 'Peppers';
 
 my %peppers = (
  #from http://en.wikipedia.org/wiki/scoville_scale
+ # Lots more to be added but this is good enough for testing
 	"trinidad moruga" => ['Trinidad Moruga Scorpion', '1,500,000 - 2,000,000', 'https://en.wikipedia.org/wiki/Trinidad_Moruga_Scorpion'],
 	"carolina reaper" => ['Carolina Reaper', '1,569,300', 'https://en.wikipedia.org/wiki/Carolina_Reaper'],
 	"naga viper"      => ['Naga Viper pepper', '1,382,118', 'https://en.wikipedia.org/wiki/Naga_Viper_pepper'],
@@ -28,6 +29,7 @@ my %peppers = (
 
 sub more_at {
     return "<br><a href='$_[0]'>More at Wikipedia</a>";
+    # maybe we can use the wikipedia image??
 }
 
 sub build_html {
@@ -38,7 +40,7 @@ sub build_html {
 
 handle remainder => sub {
 	my $key = lc $_; #set key to lower case
-	$key =~ s/'pepper'//; #This doesn't work.  We need to remove 'pepper' if it was included to find the key
+	$key =~ s/'pepper'//; #This doesn't work.  We need to remove 'pepper'  and 'chili' if it was included to find the key
 	print $key;
 	my $name = $peppers{$key}[0]; #get heat units from table
 
